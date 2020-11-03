@@ -119,7 +119,7 @@ public class MouseEvent1 : MonoBehaviour
         }
     }
 
-    IEnumerator GameEscapeCoroutine()
+    IEnumerator GameEscapeCoroutine() // key_hopae를 찾고 미니게임1이 종료되었을때
     {
         isFindH = true;
         hopae.transform.GetComponent<SpriteRenderer>().sortingOrder = 11;

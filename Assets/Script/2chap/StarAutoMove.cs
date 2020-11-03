@@ -15,14 +15,14 @@ public class StarAutoMove : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.position += Vector3.left * 0.1f * Time.deltaTime;
-		if (transform.position.x < 12.12f && !isClone)
+		if (transform.position.x < 12.12f && !isClone) // 일정위치가 되었을때, GameObejct당 한번만
 		{
 			isClone = true;
-			star = Instantiate(gameObject);
-			star.transform.parent = missionMap.transform;
-			star.transform.position = new Vector2(49.06f, transform.position.y);
+			star = Instantiate(gameObject); //gameObject 객체 복사 생성
+			star.transform.parent = missionMap.transform; // missionMap에 종속시킴
+			star.transform.position = new Vector2(49.06f, transform.position.y); // 시작위치
 		}
 		if (transform.position.x < -6.72f)
-			Destroy(gameObject);
+			Destroy(gameObject); // 끝까지간 객체는 삭제
 	}
 }

@@ -43,7 +43,7 @@ public class PlayerMovement : MonoBehaviour {
         {
             if (Input.GetMouseButtonDown(0))
             {
-                if (hit.collider.tag == "samjok" && !msEvent.isTalk )
+                if (hit.collider.tag == "samjok" && !msEvent.isTalk ) // samjok을 클릭하고 말할수 있는 상태
                 {
                     Debug.Log(msEvent.isStart);
                     StopAllCoroutines();
@@ -54,17 +54,17 @@ public class PlayerMovement : MonoBehaviour {
             
         }
 
-        else if (!msEvent.isTalk && !msEvent.isFly && msEvent.isStart && !msEvent.isMStart)
+        else if (!msEvent.isTalk && !msEvent.isFly && msEvent.isStart && !msEvent.isMStart) // 움직일수 있는 상태면
         {
             if (Input.GetMouseButtonDown(0))
             {
                 StopAllCoroutines();
-                StartCoroutine("playerMove");
+                StartCoroutine("playerMove"); // 좌측 마우스 클릭시 이동
             }
-            else if (gameObject.transform.rotation.z > 0.4 || gameObject.transform.rotation.z < -0.4)
+            else if (gameObject.transform.rotation.z > 0.4 || gameObject.transform.rotation.z < -0.4) // z축각도가 일정수준 넘어가면
             {
-                rigid.freezeRotation = true;
-                StartCoroutine("limitRotation");
+                rigid.freezeRotation = true; 
+                StartCoroutine("limitRotation"); // 일정수준으로 다시 돌아오게 만드는 코루틴
             }
         }
         if(msEvent.isFly)
@@ -79,7 +79,7 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
     
-    private void GameZone()
+    private void GameZone() // 미니게임1을 시작할수있는 공간
     {
         if (transform.position.x < hopae.transform.position.x + 0.2f && transform.position.x > hopae.transform.position.x - 0.2f)
         {
@@ -92,7 +92,7 @@ public class PlayerMovement : MonoBehaviour {
             msEvent.isGame = false;
         }
     }
-    IEnumerator playerMove()
+    IEnumerator playerMove() // 플레이어 움직이는 코루틴
     {
         Vector2 speed = Vector2.zero;
         Vector2 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
@@ -235,7 +235,7 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
     }
-    void anistop(bool l, bool i, bool r)
+    void anistop(bool l, bool i, bool r) // player ani
     {
         ani.SetBool("LeftWalk", l);
         ani.SetBool("Idle", i);

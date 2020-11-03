@@ -19,17 +19,12 @@ public class MiniGame2 : MonoBehaviour {
 	void Start () {
 		countText.transform.gameObject.SetActive(true);
 	}
-	
-	// Update is called once per frame
-	void LateUpdate () {
-		catchBug();
-	}
-
 
 	void Update()
 	{
-		mouseControl();
-		game();
+		mouseControl(); // 빈딧불이의 남은 마릿수 표시
+		catchBug(); // 반딧불이 잡기
+		gameEnd(); // 미니게임2가 끝났을때
 	}
 
 	void catchBug()
@@ -53,7 +48,7 @@ public class MiniGame2 : MonoBehaviour {
 		targetPos = Camera.main.ScreenToWorldPoint(new Vector2(Input.mousePosition.x, Input.mousePosition.y));
 		countText.transform.position = new Vector2(targetPos.x + x, targetPos.y + y);
 	}
-	void game()
+	void gameEnd()
 	{
 		if (bugCount == 0)
 		{
